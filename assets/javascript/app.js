@@ -16,7 +16,7 @@ $("#add-GIF").on("click", function() {
     var gif = $("#GIF-input").val();
     gifs.push(gif);
     renderButtons();
-
+    
   });
 
 renderButtons();
@@ -36,17 +36,36 @@ $(document).on("click", ".giffy", function() {
         for (var i = 0; i < 10; i++) {
           var gifDiv = $("<div>");
 
+        //   var gifClass = $('class = "random"');
+
           var rating = results[i].rating;
 
           var p = $("<p>").text("Rating: " + rating);
 
-          var gifImage = $("<img>");
+          var gifImage = $('<img>');
           gifImage.attr("src", results[i].images.fixed_height.url);
-
+          
+        //   gifDiv.prepend(gifClass);
           gifDiv.prepend(p);
           gifDiv.prepend(gifImage);
-
+          gifImage.addClass('random')
           $("#gifs-appear-here").prepend(gifDiv);
+          
         }
+        
       });
+
+      $(document).on('click', '.random', function() {
+        var src = $(this).attr("src");
+      if($(this).hasClass('playing')){
+         //stop
+         $(this).attr('src', src.replace(/\.gif/i, "_s.gif"))
+         $(this).removeClass('playing');
+      } else {
+        //play
+        $(this).addClass('playing');
+        $(this).attr('src', src.replace(/\_s.gif/i, ".gif"))
+      }
+    });
+      
   });
