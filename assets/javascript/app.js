@@ -1,6 +1,6 @@
 
 
-var gifs = ["Kitten", "Cheese", "Shark", "Plane"]
+var gifs = ["Kitten", "Jungle", "Cartoon", "Jurassic Park"]
 
 function makeButton(str) {
     return `<button class ="giffy">${str}</button>`
