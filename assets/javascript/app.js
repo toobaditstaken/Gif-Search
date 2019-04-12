@@ -1,6 +1,6 @@
 
 
-var gifs = ["Sheep", "Cheese", "Shark", "Plane"]
+var gifs = ["Kitten", "Cheese", "Shark", "Plane"]
 
 function makeButton(str) {
     return `<button class ="giffy">${str}</button>`
@@ -10,6 +10,14 @@ function renderButtons() {
     $("#buttons-view").html(gifs.map(makeButton));
     
 }
+
+$("#add-GIF").on("click", function() {
+    event.preventDefault();
+    var gif = $("#GIF-input").val();
+    gifs.push(gif);
+    renderButtons();
+
+  });
 
 renderButtons();
 
@@ -25,7 +33,7 @@ $(document).on("click", ".giffy", function() {
       .then(function(response) {
         var results = response.data;
 
-        for (var i = 0; i < results.length; i++) {
+        for (var i = 0; i < 10; i++) {
           var gifDiv = $("<div>");
 
           var rating = results[i].rating;
