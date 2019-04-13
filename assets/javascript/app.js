@@ -1,6 +1,6 @@
 
 
-var gifs = ["Kitten", "Jungle", "Cartoon", "Jurassic Park"]
+var gifs = ["Kitten", "Puppies", "Cartoon", "Jurassic Park"]
 
 function makeButton(str) {
     return `<button class ="giffy">${str}</button>`
@@ -8,7 +8,6 @@ function makeButton(str) {
 
 function renderButtons() {
     $("#buttons-view").html(gifs.map(makeButton));
-    
 }
 
 $("#add-GIF").on("click", function() {
@@ -43,13 +42,14 @@ $(document).on("click", ".giffy", function() {
           var p = $("<p>").text("Rating: " + rating);
 
           var gifImage = $('<img>');
-          gifImage.attr("src", results[i].images.fixed_height.url);
+          gifImage.attr("src", results[i].images.fixed_height_still.url);
           
         //   gifDiv.prepend(gifClass);
           gifDiv.prepend(p);
           gifDiv.prepend(gifImage);
           gifImage.addClass('random')
           $("#gifs-appear-here").prepend(gifDiv);
+          
           
         }
         
